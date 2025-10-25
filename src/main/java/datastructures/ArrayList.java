@@ -97,6 +97,7 @@ public class ArrayList {
      * Puts the element at the index than pushes all elements forward.
      * @param element, the element to add to the list
      * @param index, index at which the element should be added
+     * @throws NullPointerException if null input
      */
     public void add(String element, int index) {
         validateNotNull(element);
@@ -118,8 +119,10 @@ public class ArrayList {
     /**
      * Takes in an element to be set at the specified index,
      * validates the element taken is not Null and returns a buffered value that was previously set.
-     * @param element, the element to add to the list
+     * @param element, the element to set in the list
      * @param index, index at which the element should be set
+     * @return replaced_element, returns the value which was replaced from the array
+     * @throws NullPointerException if null input
      */
     public String set(String element, int index) {
         validateNotNull(element);
@@ -129,8 +132,21 @@ public class ArrayList {
         return replaced_element;
     }
 
+    /**
+     * Takes in an integer index at which the value should be removed from the list
+     * @param index, at which the String should be removed
+     * @return removed_element, returns the value which was removed
+     */
     public String remove(int index) {
-        String removed_element = "";
+        validateOutOfRange(index);
+
+        String removed_element = data[index];
+
+        for (int i = index; i < size-1; i++) {
+            data[i] = data[i+1];
+        }
+        size--;
+
         return removed_element;
     }
 
