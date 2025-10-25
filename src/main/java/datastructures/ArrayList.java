@@ -42,8 +42,19 @@ public class ArrayList {
         }
     }
 
-    public int indexOf(String s) {
-        return 0;
+
+    /**
+     * Returns first found index of input element
+     * @param element, the value to look for
+     * @return index of the element, if the element doesn't exist in the array, -1 will be returned
+     */
+    public int indexOf(String element) {
+        for (int i = 0; i < data.length; i++){
+            if (element.equals(data[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void add(String element) {
