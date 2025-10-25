@@ -150,8 +150,20 @@ public class ArrayList {
         return removed_element;
     }
 
+    /**
+     * Takes in the element to be removed, iterates through the list and calls this.remove by the index.
+     * @param element, the value of the elements to remove from the list
+     * @return bool based on the fact if any has been removed, gets set at all removes to true
+     */
     public boolean removeAll(String element) {
-        return true;
+        boolean removed_any = false;
+        for (int i = 0; i < data.length; i++) {
+            if (element.equals(data[i])) {
+                this.remove(i);
+                removed_any = true;
+            }
+        }
+        return removed_any;
     }
 
     public void clear() {
