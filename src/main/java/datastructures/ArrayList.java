@@ -1,5 +1,7 @@
 package datastructures;
 
+import java.util.Arrays;
+
 public class ArrayList {
     private String[] data;
     private int size;
@@ -166,8 +168,12 @@ public class ArrayList {
         return removed_any;
     }
 
+    /**
+     * Assigns the data to be complete start over, new string list of 10 elements.
+     * Use this wisely ;)
+     */
     public void clear() {
-
+        data = new String[10];
     }
 
     public ArrayList deduplicate() {
