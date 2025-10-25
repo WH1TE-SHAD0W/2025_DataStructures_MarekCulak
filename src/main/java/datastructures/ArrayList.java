@@ -176,8 +176,25 @@ public class ArrayList {
         data = new String[10];
     }
 
+    public boolean contains(String element) {
+        validateNotNull(element);
+
+        for (int i = 0; i < size; i++) {
+            if (element.equals(data[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList deduplicate() {
         ArrayList deduplicated_list = new ArrayList();
+
+        for (int i = 0; i < size; i++) {
+            if (!deduplicated_list.contains(data[i])) {
+                deduplicated_list.add(data[i]);
+            }
+        }
         return deduplicated_list;
     }
 
