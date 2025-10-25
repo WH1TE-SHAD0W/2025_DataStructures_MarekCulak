@@ -115,8 +115,17 @@ public class ArrayList {
         size++;
     }
 
+    /**
+     * Takes in an element to be set at the specified index,
+     * validates the element taken is not Null and returns a buffered value that was previously set.
+     * @param element, the element to add to the list
+     * @param index, index at which the element should be set
+     */
     public String set(String element, int index) {
-        String replaced_element = "";
+        validateNotNull(element);
+
+        String replaced_element = data[index];
+        data[index] = element;
         return replaced_element;
     }
 
