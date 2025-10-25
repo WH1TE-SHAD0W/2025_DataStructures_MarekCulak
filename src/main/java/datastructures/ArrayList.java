@@ -24,12 +24,18 @@ public class ArrayList {
      * Returns value of a specified index position in data of the list
      * @param index, the index from which to retrieve the value
      * @return String value, returns the actual value retrieved from the index
+     * @throws IndexOutOfBoundsException if parameter index out of range of the size of this array
      */
     public String get(int index) {
         validateOutOfRange(index);
         return data[index];
     }
 
+    /**
+     * Throws exception if the index int is not in range of size
+     * @param index, the index to validate
+     * @throws IndexOutOfBoundsException if out of range
+     */
     private void validateOutOfRange(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index out of range.");
