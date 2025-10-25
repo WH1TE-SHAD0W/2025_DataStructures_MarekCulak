@@ -20,8 +20,20 @@ public class ArrayList {
         return size;
     }
 
+    /**
+     * Returns value of a specified index position in data of the list
+     * @param index, the index from which to retrieve the value
+     * @return String value, returns the actual value retrieved from the index
+     */
     public String get(int index) {
-        return "";
+        validateOutOfRange(index);
+        return data[index];
+    }
+
+    private void validateOutOfRange(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index out of range.");
+        }
     }
 
     public int indexOf(String s) {
