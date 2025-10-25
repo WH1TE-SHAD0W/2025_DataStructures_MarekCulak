@@ -57,12 +57,62 @@ public class ArrayList {
         return -1;
     }
 
-    public void add(String element) {
-
+    /**
+     * Verifies the capacity of the array, if it is equal to the size (its full) make the capacity doubled
+     * Doesn't take in any parameter nor returns any variable
+     */
+    private void ensureCapacity() {
+        if (size == data.length) {
+            String[] tmp = new String[data.length * 2];
+            System.arraycopy(data, 0, tmp, 0, data.length);
+            data = tmp;
+        }
     }
 
-    public void add(String element, int index) {
+    /**
+     * Verifies if the input is null, throws an exception. Used in methods where the null input is not accepted.
+     * @throws NullPointerException if null input
+     */
+    private void validateNotNull(String input) {
+        if (input == null) {
+            throw new NullPointerException("Null input is not accepted.");
+        }
+    }
 
+    /**
+     * Takes in an element to be added to the list, adds it to end
+     * @param element, the element to add to the list
+     * @throws NullPointerException if null input
+     */
+    public void add(String element) {
+        validateNotNull(element);
+        ensureCapacity();
+
+        data[size] = element;
+        size++;
+    }
+
+    /**
+     * Takes in an element to be added to the list, adds it to the index.
+     * Puts the element at the index than pushes all elements forward.
+     * @param element, the element to add to the list
+     * @param index, index at which the element should be added
+     */
+    public void add(String element, int index) {
+        validateNotNull(element);
+        ensureCapacity();
+
+        String tmp = "";
+        String swap = data[index];
+        data[index] = element;
+
+        for (int i = index+1; i < size+1; i++) {
+            tmp = data[i];
+            data[i] = swap;
+            swap = tmp;
+        }
+
+        size++;
     }
 
     public String set(String element, int index) {
