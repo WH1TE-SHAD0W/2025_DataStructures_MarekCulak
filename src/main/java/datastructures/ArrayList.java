@@ -12,9 +12,12 @@ public class ArrayList {
         size = 0;
     }
 
-
+    /**
+     * Returns the size of the data in the array
+     * @return int size, returns the size of data
+     */
     public int size() {
-        return 0;
+        return size;
     }
 
     public String get(int index) {
