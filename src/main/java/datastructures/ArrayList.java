@@ -4,9 +4,14 @@ public class ArrayList {
     private String[] data;
     private int size;
 
+    /**
+     * Constructor of the ArrayList
+     */
     public ArrayList() {
-
+        data = new String[10];
+        size = 0;
     }
+
 
     public int size() {
         return 0;
