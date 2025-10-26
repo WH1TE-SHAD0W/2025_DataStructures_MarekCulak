@@ -140,7 +140,15 @@ public class LinkedList {
     }
 
     public boolean removeAll(String element) {
-        return true;
+        boolean removed_any = false;
+        Node current = this.head;
+        for (int i = 0; i < size; i++) {
+            if (current.data == element) {
+                remove(element);
+            }
+            current = current.next;
+        }
+        return false;
     }
 
     public void clear() {
