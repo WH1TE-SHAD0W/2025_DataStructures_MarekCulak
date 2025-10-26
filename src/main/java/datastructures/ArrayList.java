@@ -188,6 +188,11 @@ public class ArrayList {
         data = new String[10];
     }
 
+    /**
+     * A util method of {@link ArrayList} to verify if an element exists in list
+     * @param element, the value to verify
+     * @return boolean, based on the presence
+     */
     public boolean contains(String element) {
         validateNotNull(element);
 
@@ -199,6 +204,10 @@ public class ArrayList {
         return false;
     }
 
+    /**
+     * Creates a new list, starts putting the original values, once the value is there it skips the add.
+     * @return deduplicated_list, returns the list which has been deduplicated
+     */
     public ArrayList deduplicate() {
         ArrayList deduplicated_list = new ArrayList();
 
@@ -210,6 +219,11 @@ public class ArrayList {
         return deduplicated_list;
     }
 
+    /**
+     * Creates a new list starting from the position number provided ends at hte size
+     * and finishes the new list from the beginning
+     * @param positions, integer to define how many positions to rotate the list
+     */
     public void rotate(int positions) {
         ArrayList rotated_list = new ArrayList();
 
