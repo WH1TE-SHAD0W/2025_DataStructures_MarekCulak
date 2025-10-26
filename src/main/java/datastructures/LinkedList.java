@@ -98,9 +98,23 @@ public class LinkedList {
         size++;
     }
 
-    public String set(String element, int index) {
-        String replaced_element = "";
-        return replaced_element;
+    public int set(int index, int value) {
+        if (isEmpty()) {
+            throw new NullPointerException("Can't loop through an empty list!");
+        }
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("");
+        }
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        int old_value = current.data;
+        current.data = value;
+
+        return old_value;
     }
 
     public String remove(int index) {
