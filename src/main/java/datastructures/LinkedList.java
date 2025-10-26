@@ -49,8 +49,18 @@ public class LinkedList {
         return current;
     }
 
-    public int indexOf(String s) {
-        return 0;
+    public int indexOf(int value) {
+        if (!isEmpty()) {
+            Node current = head;
+            for (int i = 0; i < this.size; i++) {
+                if (current.data == value) {
+                    return i;
+                } else {
+                    current = current.next;
+                }
+            }
+        }
+        throw new NullPointerException("Can't loop through an empty list!");
     }
 
     public void add(int value) {
