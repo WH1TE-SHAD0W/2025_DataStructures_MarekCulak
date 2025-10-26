@@ -70,6 +70,20 @@ public class ArrayList {
     }
 
     /**
+     * Verifies the capacity of the array, if it is equal to the size (its full) make the capacity doubled
+     * Doesn't take in any parameter nor returns any variable
+     */
+    private void ensureCapacity(int capacity) {
+        int k = (int) Math.ceil(Math.log((double) capacity / 10) / Math.log(2));
+
+        if (capacity > data.length) {
+            String[] tmp = new String[data.length * k];
+            System.arraycopy(data, 0, tmp, 0, data.length);
+            data = tmp;
+        }
+    }
+
+    /**
      * Verifies if the input is null, throws an exception. Used in methods where the null input is not accepted.
      * @throws NullPointerException if null input
      */
@@ -209,7 +223,15 @@ public class ArrayList {
         this.data = rotated_list.data;
     }
 
-    public void join () {
+    /**
+     * Takes in another list and appends the whole list
+     * @param list, a list to add
+     */
+    public void join (ArrayList list) {
+        ensureCapacity(data.length + list.data.length);
 
+        for (int i = 0; i < list.size; i++) {
+            this.add(list.data[i]);
+        }
     }
 }
