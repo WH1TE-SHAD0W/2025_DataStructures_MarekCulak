@@ -1,7 +1,5 @@
 package datastructures;
 
-import java.util.Arrays;
-
 public class ArrayList {
     private String[] data;
     private int size;
@@ -198,8 +196,17 @@ public class ArrayList {
         return deduplicated_list;
     }
 
-    public void rotate() {
+    public void rotate(int positions) {
+        ArrayList rotated_list = new ArrayList();
 
+        for (int i = positions; i < size; i++) {
+            rotated_list.add(data[i]);
+        }
+        for (int i = 0; i < positions; i++) {
+            rotated_list.add(data[i]);
+        }
+
+        this.data = rotated_list.data;
     }
 
     public void join () {
