@@ -23,8 +23,17 @@ public class LinkedList {
         return this.size;
     }
 
-    public String get(int index) {
-        return "";
+    public int get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("");
+        }
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        return current.data;
     }
 
     public int indexOf(String s) {
@@ -81,12 +90,41 @@ public class LinkedList {
     }
 
     public void clear() {
+        head = null;
+        size = 0;
+    }
 
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    public boolean contains(int value) {
+        if (!isEmpty()) {
+            Node current = head;
+            for (int i = 0; i < this.size; i++) {
+                if (current.data == value) {
+                    return true;
+                } else {
+                    current = current.next;
+                }
+            }
+        }
+        return false;
     }
 
     public LinkedList deduplicate() {
-        LinkedList deduplicated_list = new LinkedList();
-        return deduplicated_list;
+        LinkedList new_list = new LinkedList();
+
+        Node current = head;
+
+        for (int i = 0; i < this.size; i++) {
+            if (!new_list.contains(current.data)) {
+                new_list.add(current.data);
+            }
+            current = current.next;
+        }
+
+        return new_list;
     }
 
     public void rotate() {
