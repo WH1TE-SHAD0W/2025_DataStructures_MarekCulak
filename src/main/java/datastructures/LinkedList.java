@@ -117,9 +117,26 @@ public class LinkedList {
         return old_value;
     }
 
-    public String remove(int index) {
-        String removed_element = "";
-        return removed_element;
+    public int remove(int value) {
+        Node current = head;
+        if (current.data == value) {
+            int return_value = current.data;
+            head = head.next;
+            return return_value;
+        }
+        for (int i = 0; i < this.size; i++) {
+            if (current.next == null) {
+                return value;
+            }
+            if (current.next.data == value) {
+                int return_value = current.next.data;
+                current.next = current.next.next;
+                size--;
+                return return_value;
+            }
+            current = current.next;
+        }
+        return value;
     }
 
     public boolean removeAll(String element) {
