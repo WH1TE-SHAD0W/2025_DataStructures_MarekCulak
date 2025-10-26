@@ -36,6 +36,19 @@ public class LinkedList {
         return current.data;
     }
 
+    private Node get_node(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("");
+        }
+
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        return current;
+    }
+
     public int indexOf(String s) {
         return 0;
     }
@@ -127,8 +140,23 @@ public class LinkedList {
         return new_list;
     }
 
-    public void rotate() {
+    public LinkedList rotate(int positions) {
+        int index = size - positions;
 
+        LinkedList new_list = new LinkedList();
+
+        Node current = this.get_node(index);
+        for (int i = 0; i < positions; i++) {
+            new_list.add(current.data);
+            current = current.next;
+        }
+        current = head;
+        for (int i = 0; i < index; i++) {
+            new_list.add(current.data);
+            current = current.next;
+        }
+
+        return new_list;
     }
 
     public void join(LinkedList other) {
