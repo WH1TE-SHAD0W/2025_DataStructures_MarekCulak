@@ -131,7 +131,14 @@ public class LinkedList {
 
     }
 
-    public void join () {
-
+    public void join(LinkedList other) {
+        Node current = head;
+        for (int i = 0; i < this.size; i++) {
+            current = current.next;
+            if (current.next == null) {
+                current.next = other.head;
+            }
+        }
+        size += other.size;
     }
 }
