@@ -11,9 +11,9 @@ public class LinkedList {
 
     private static class Node {
         private Node next;
-        private int data;
+        private String data;
 
-        public Node(int data) {
+        public Node(String data) {
             this.next = null;
             this.data = data;
         }
@@ -23,7 +23,7 @@ public class LinkedList {
         return this.size;
     }
 
-    public int get(int index) {
+    public String get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("");
         }
@@ -49,11 +49,11 @@ public class LinkedList {
         return current;
     }
 
-    public int indexOf(int value) {
+    public int indexOf(String value) {
         if (!isEmpty()) {
             Node current = head;
             for (int i = 0; i < this.size; i++) {
-                if (current.data == value) {
+                if (current.data.equals(value)) {
                     return i;
                 } else {
                     current = current.next;
@@ -63,7 +63,7 @@ public class LinkedList {
         throw new NullPointerException("Can't loop through an empty list!");
     }
 
-    public void add(int value) {
+    public void add(String value) {
         Node newNode = new Node(value);
 
         if (head == null) {
@@ -79,7 +79,7 @@ public class LinkedList {
         size++;
     }
 
-    public void add(int index, int value) {
+    public void add(int index, String value) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("");
         }
@@ -98,7 +98,7 @@ public class LinkedList {
         size++;
     }
 
-    public int set(int index, int value) {
+    public String set(int index, String value) {
         if (isEmpty()) {
             throw new NullPointerException("Can't loop through an empty list!");
         }
@@ -111,16 +111,16 @@ public class LinkedList {
             current = current.next;
         }
 
-        int old_value = current.data;
+        String old_value = current.data;
         current.data = value;
 
         return old_value;
     }
 
-    public int remove(int value) {
+    public String remove(String value) {
         Node current = head;
-        if (current.data == value) {
-            int return_value = current.data;
+        if (current.data.equals(value)) {
+            String return_value = current.data;
             head = head.next;
             return return_value;
         }
@@ -128,8 +128,8 @@ public class LinkedList {
             if (current.next == null) {
                 return value;
             }
-            if (current.next.data == value) {
-                int return_value = current.next.data;
+            if (current.next.data.equals(value)) {
+                String return_value = current.next.data;
                 current.next = current.next.next;
                 size--;
                 return return_value;
@@ -139,12 +139,12 @@ public class LinkedList {
         return value;
     }
 
-    public boolean removeAll(String element) {
+    public boolean removeAll(String value) {
         boolean removed_any = false;
         Node current = this.head;
         for (int i = 0; i < size; i++) {
-            if (current.data == element) {
-                remove(element);
+            if (current.data.equals(value)) {
+                remove(value);
             }
             current = current.next;
         }
@@ -160,11 +160,11 @@ public class LinkedList {
         return head == null;
     }
 
-    public boolean contains(int value) {
+    public boolean contains(String value) {
         if (!isEmpty()) {
             Node current = head;
             for (int i = 0; i < this.size; i++) {
-                if (current.data == value) {
+                if (current.data.equals(value)) {
                     return true;
                 } else {
                     current = current.next;
