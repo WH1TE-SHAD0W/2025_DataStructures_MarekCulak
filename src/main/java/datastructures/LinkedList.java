@@ -5,24 +5,43 @@ public class LinkedList {
     private Node head;
     private Node tail;
 
+    /**
+     * Constructor of the LinkedList
+     */
     public LinkedList() {
         this.size = 0;
     }
 
+    /**
+     * Class inside a class to define instances of each indexed element
+     */
     private static class Node {
         private Node next;
         private String data;
 
+        /**
+         * Constructor
+         * @param data, value to hold inside the Node upon creation
+         */
         public Node(String data) {
             this.next = null;
             this.data = data;
         }
     }
 
+    /**
+     * Method to return the size of the List
+     * @return, integer of the length
+     */
     public int size() {
         return this.size;
     }
 
+    /**
+     * Method to retrieve the data at a specific index
+     * @param index, at which to look for the value
+     * @return, String the value the Node holds
+     */
     public String get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("");
@@ -36,6 +55,11 @@ public class LinkedList {
         return current.data;
     }
 
+    /**
+     * Retrieves the actual object Node at an index
+     * @param index, position at the list
+     * @return, the Node object
+     */
     private Node get_node(int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("");
@@ -49,6 +73,11 @@ public class LinkedList {
         return current;
     }
 
+    /**
+     * Once the value is known, the index can be found with this. First ever Node that holds it will be returned.
+     * @param value, String to look for
+     * @return, integer, the index of the Node
+     */
     public int indexOf(String value) {
         if (!isEmpty()) {
             Node current = head;
@@ -63,6 +92,10 @@ public class LinkedList {
         throw new NullPointerException("Can't loop through an empty list!");
     }
 
+    /**
+     * "Appends" the List by creating a node at the end with the given value.
+     * @param value, to add to the end
+     */
     public void add(String value) {
         Node newNode = new Node(value);
 
@@ -79,6 +112,11 @@ public class LinkedList {
         size++;
     }
 
+    /**
+     * Adds a new Node at the given index to LinkedList
+     * @param index, at which it is created
+     * @param value, that the Node holds
+     */
     public void add(int index, String value) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("");
@@ -98,6 +136,12 @@ public class LinkedList {
         size++;
     }
 
+    /**
+     * Sets the given value to the Node that sits at the given index
+     * @param index of the Node
+     * @param value to set in the Node
+     * @return value that was deleted
+     */
     public String set(int index, String value) {
         if (isEmpty()) {
             throw new NullPointerException("Can't loop through an empty list!");
@@ -117,6 +161,11 @@ public class LinkedList {
         return old_value;
     }
 
+    /**
+     * Removes first found Node that has the value by redirecting the pointer to the next Node
+     * @param value, the value to delete
+     * @returns the deleted value if not found, gives the not found string
+     */
     public String remove(String value) {
         Node current = head;
         if (current.data.equals(value)) {
@@ -136,9 +185,14 @@ public class LinkedList {
             }
             current = current.next;
         }
-        return value;
+        return "not found";
     }
 
+    /**
+     * Removes all Nodes in the List that contains the value inserted
+     * @param value to remove from list
+     * @return boolean whether any of the Nodes got removed
+     */
     public boolean removeAll(String value) {
         boolean removed_any = false;
         Node current = this.head;
@@ -151,15 +205,27 @@ public class LinkedList {
         return false;
     }
 
+    /**
+     * Clear the whole List to original state => null the head
+     */
     public void clear() {
         head = null;
         size = 0;
     }
 
+    /**
+     * Verifies if the List holds any value
+     * @return boolean whether it has anything in it
+     */
     public boolean isEmpty() {
         return head == null;
     }
 
+    /**
+     * Verifies if the value given is inside the List
+     * @param value to check in
+     * @return boolean based on the fact if it is in it or not
+     */
     public boolean contains(String value) {
         if (!isEmpty()) {
             Node current = head;
@@ -174,6 +240,11 @@ public class LinkedList {
         return false;
     }
 
+    /**
+     * Deduplicates the whole List by creating a new one and running method contains
+     * to verify if it would be added in or not
+     * @returns the deduplicated List
+     */
     public LinkedList deduplicate() {
         LinkedList new_list = new LinkedList();
 
@@ -189,6 +260,12 @@ public class LinkedList {
         return new_list;
     }
 
+    /**
+     * Rotates the List by creating anew one and assigning all Nodes there by
+     * starting from the given position
+     * @param positions the int by how many indexes should it be rotated
+     * @returns the rotated list
+     */
     public LinkedList rotate(int positions) {
         int index = size - positions;
 
@@ -208,6 +285,10 @@ public class LinkedList {
         return new_list;
     }
 
+    /**
+     * Attaches the given List to this one
+     * @param other, the List to attach at the end
+     */
     public void join(LinkedList other) {
         Node current = head;
         for (int i = 0; i < this.size; i++) {
