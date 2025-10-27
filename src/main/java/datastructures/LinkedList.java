@@ -65,6 +65,12 @@ public class LinkedList {
             throw new IndexOutOfBoundsException("");
         }
 
+        if (index == 0) {
+            return head;
+        } else if (index == size) {
+            return tail;
+        }
+
         Node current = head;
         for (int i = 0; i < index; i++) {
             current = current.next;
@@ -99,16 +105,15 @@ public class LinkedList {
     public void add(String value) {
         Node newNode = new Node(value);
 
-        if (head == null) {
+        if (head == null || tail == null) {
             head = newNode;
         }
+
         else {
-            Node current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            tail.next = newNode;
         }
+        tail = newNode;
+
         size++;
     }
 
@@ -123,15 +128,10 @@ public class LinkedList {
         }
 
         Node newNode = new Node(value);
-        if (index == 0) {
-            newNode.next = head;
-            head = newNode;
-        } else {
-            Node current = head;
-            for (int i = 0; i < index - 1; i++) {
-                current = current.next;
-            }
-        }
+
+        Node node = get_node(index);
+        newNode.next = node.next;
+        node.next = newNode;
 
         size++;
     }
@@ -150,13 +150,9 @@ public class LinkedList {
             throw new IndexOutOfBoundsException("");
         }
 
-        Node current = head;
-        for (int i = 0; i < index; i++) {
-            current = current.next;
-        }
-
-        String old_value = current.data;
-        current.data = value;
+        Node node = get_node(index);
+        String old_value = node.data;
+        node.data = value;
 
         return old_value;
     }
@@ -167,24 +163,24 @@ public class LinkedList {
      * @returns the deleted value if not found, gives the not found string
      */
     public String remove(String value) {
-        Node current = head;
-        if (current.data.equals(value)) {
-            String return_value = current.data;
-            head = head.next;
+        if (value.equals(tail.data)) {
+            Node node = get_node(indexOf(value)-1);
+            String return_value = node.next.data;
+            node.next = null;
+            tail = node;
+            size--;
             return return_value;
         }
-        for (int i = 0; i < this.size; i++) {
-            if (current.next == null) {
-                return value;
-            }
-            if (current.next.data.equals(value)) {
-                String return_value = current.next.data;
-                current.next = current.next.next;
-                size--;
-                return return_value;
-            }
-            current = current.next;
+        int index = indexOf(value);
+        if (index == size-1) {
+            Node node = get_node(index);
+            String return_value = node.next.data;
+            node.next = node.next.next;
+            size--;
+            return return_value;
         }
+
+
         return "not found";
     }
 
@@ -210,6 +206,7 @@ public class LinkedList {
      */
     public void clear() {
         head = null;
+        tail = null;
         size = 0;
     }
 
@@ -290,13 +287,8 @@ public class LinkedList {
      * @param other, the List to attach at the end
      */
     public void join(LinkedList other) {
-        Node current = head;
-        for (int i = 0; i < this.size; i++) {
-            current = current.next;
-            if (current.next == null) {
-                current.next = other.head;
-            }
-        }
+        tail.next = other.head;
+        tail = other.tail;
         size += other.size;
     }
 }
