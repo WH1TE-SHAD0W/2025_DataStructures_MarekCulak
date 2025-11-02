@@ -31,7 +31,7 @@ public class LinkedList {
 
     /**
      * Method to return the size of the List
-     * @return, integer of the length
+     * @return integer of the length
      */
     public int size() {
         return this.size;
@@ -39,7 +39,7 @@ public class LinkedList {
 
     /**
      * Gives out once the requested index of something in the list is out of range
-     * @param index
+     * @param index, the index of this list to verify its existence
      * @throws IndexOutOfBoundsException, stops the program before accessing the wrong index.
      */
     private void validateOutOfRange(int index) {
@@ -50,7 +50,7 @@ public class LinkedList {
 
     /**
      * Validation method to give out if the list is null and would have get accessed data
-     * @param message, that would say the usage
+     * @param message, that would say the usage for better traceability
      * @throws NullPointerException, gives out about empty list
      */
     private void validateNull(String message) {
@@ -73,7 +73,7 @@ public class LinkedList {
     /**
      * Method to retrieve the data at a specific index
      * @param index, at which to look for the value
-     * @return, String the value the Node holds
+     * @return String the value the Node holds
      * @throws IndexOutOfBoundsException if requested value from a Node that is out of the list range
      */
     public String get(int index) {
@@ -90,7 +90,7 @@ public class LinkedList {
     /**
      * Retrieves the actual object Node at an index
      * @param index, position at the list
-     * @return, the Node object
+     * @return the Node object
      * @throws IndexOutOfBoundsException if requested a node that is not the list size
      */
     private Node get_node(int index) {
@@ -113,7 +113,7 @@ public class LinkedList {
     /**
      * Once the value is known, the index can be found with this. First ever Node that holds it will be returned.
      * @param value, String to look for
-     * @return, integer, the index of the Node otherwise -1 if not found
+     * @return integer, the index of the Node otherwise -1 if not found
      * @throws NullPointerException once requested a position and the list is empty
      */
     public int indexOf(String value) {
@@ -188,7 +188,7 @@ public class LinkedList {
     /**
      * Removes the node at the given index
      * @param index, the value to delete
-     * @returns the deleted value if not found, gives the not found string
+     * @return the deleted value if not found, gives the not found string
      * @throws NullPointerException once tried to remove from an empty list
      * @throws IndexOutOfBoundsException if tried to remove an element that is not inside of the list.
      */
@@ -277,7 +277,7 @@ public class LinkedList {
     /**
      * Deduplicates the whole List by creating a new one and running method contains
      * to verify if it would be added in or not
-     * @returns the deduplicated List
+     * @return the deduplicated List
      * @throws NullPointerException if engaged to deduplicate an empty list
      */
     public LinkedList deduplicate() {
@@ -300,7 +300,7 @@ public class LinkedList {
      * Rotates the List by creating anew one and assigning all Nodes there by
      * starting from the given position
      * @param positions the int by how many indexes should it be rotated
-     * @returns the rotated list
+     * @return the rotated list
      * @throws NullPointerException if the list data is null
      */
     public LinkedList rotate(int positions) {
