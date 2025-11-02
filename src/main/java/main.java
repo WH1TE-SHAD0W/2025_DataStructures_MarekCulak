@@ -1,9 +1,5 @@
 import datastructures.ArrayList;
 import datastructures.LinkedList;
-import performance.PerformanceMeasurement;
-
-import java.util.Arrays;
-import java.util.Random;
 
 public class main {
     public void displayList(LinkedList list) {
@@ -19,13 +15,15 @@ public class main {
         System.out.println();
     }
     void main() {
-        double[][] result1 = PerformanceMeasurement.PerformanceAdd.performanceAdd();
-        System.out.println(Arrays.deepToString(result1));
-
-        double[][] result2 = PerformanceMeasurement.PerformanceGet.performanceGet();
-        System.out.println(Arrays.deepToString(result2));
-
-        double[][] result = PerformanceMeasurement.PerformanceRemove.performanceRemove();
-        System.out.println(Arrays.deepToString(result));
+//        LinkedList list = utils.Random.randomLinkedList(50, 40);
+//
+//        double[][] result1 = PerformanceMeasurement.PerformanceAdd.performanceAdd();
+//        System.out.println(Arrays.deepToString(result1));
+//
+//        double[][] result2 = PerformanceMeasurement.PerformanceGet.performanceGet();
+//        System.out.println(Arrays.deepToString(result2));
+//
+//        double[][] result = PerformanceMeasurement.PerformanceRemove.performanceRemove();
+//        System.out.println(Arrays.deepToString(result));
     }
 }
