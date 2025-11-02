@@ -2,6 +2,9 @@ import datastructures.ArrayList;
 import datastructures.LinkedList;
 import performance.PerformanceMeasurement;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class main {
     public void displayList(LinkedList list) {
         for (int i = 0; i < list.size(); i++) {
@@ -16,14 +19,13 @@ public class main {
         System.out.println();
     }
     void main() {
-        double start = System.nanoTime();
-        ArrayList list = PerformanceMeasurement.randomArrayList(20000000, 8);
-        double finish = System.nanoTime();
-        double timing = finish - start;
-        double elapsedSeconds = (finish - start) / 1_000_000_000.0;
-        System.out.println(timing+" nanoseconds, which is in seconds: "+elapsedSeconds);
+        double[][] result1 = PerformanceMeasurement.PerformanceAdd.performanceAdd();
+        System.out.println(Arrays.deepToString(result1));
 
-//        displayList(list);
+        double[][] result2 = PerformanceMeasurement.PerformanceGet.performanceGet();
+        System.out.println(Arrays.deepToString(result2));
 
+        double[][] result = PerformanceMeasurement.PerformanceRemove.performanceRemove();
+        System.out.println(Arrays.deepToString(result));
     }
 }
