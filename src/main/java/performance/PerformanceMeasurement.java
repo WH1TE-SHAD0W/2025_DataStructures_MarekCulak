@@ -10,7 +10,7 @@ public class PerformanceMeasurement {
     public static class PerformanceAdd{
         public static double timedAdd(ArrayList list, int index) {
             double start = System.nanoTime();
-            list.add(utils.Random.randomString(16), index);
+            list.add(utils.Random.randomString(16));
             double finish = System.nanoTime();
             double timing = finish - start;
             double elapsedSeconds = (finish - start) / 1_000_000_000.0;
@@ -20,7 +20,7 @@ public class PerformanceMeasurement {
 
         public static double timedAdd(LinkedList list, int index) {
             double start = System.nanoTime();
-            list.add(index, utils.Random.randomString(16));
+            list.add(utils.Random.randomString(16));
             double finish = System.nanoTime();
             double timing = finish - start;
             double elapsedSeconds = (finish - start) / 1_000_000_000.0;
