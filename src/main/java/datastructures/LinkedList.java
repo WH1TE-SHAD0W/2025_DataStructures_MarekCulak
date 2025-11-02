@@ -232,10 +232,11 @@ public class LinkedList {
         for (int i = 0; i < size; i++) {
             if (current.data.equals(value)) {
                 remove(i);
+                removed_any = true;
             }
             current = current.next;
         }
-        return false;
+        return removed_any;
     }
 
     /**
