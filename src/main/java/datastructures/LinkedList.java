@@ -158,30 +158,31 @@ public class LinkedList {
     }
 
     /**
-     * Removes first found Node that has the value by redirecting the pointer to the next Node
-     * @param value, the value to delete
+     * Removes the node at the given index
+     * @param index, the value to delete
      * @returns the deleted value if not found, gives the not found string
      */
-    public String remove(String value) {
-        if (value.equals(tail.data)) {
-            Node node = get_node(indexOf(value)-1);
+    public String remove(int index) {
+        if (index == size) {
+            Node node = get_node(index-1);
             String return_value = node.next.data;
             node.next = null;
             tail = node;
             size--;
             return return_value;
         }
-        int index = indexOf(value);
-        if (index == size-1) {
-            Node node = get_node(index);
-            String return_value = node.next.data;
-            node.next = node.next.next;
+        if (index == 0) {
+            String return_value = head.data;
+            head = head.next;
             size--;
             return return_value;
         }
 
-
-        return "not found";
+        Node node = get_node(index);
+        String return_value = node.next.data;
+        node.next = node.next.next;
+        size--;
+        return return_value;
     }
 
     /**
@@ -194,7 +195,7 @@ public class LinkedList {
         Node current = this.head;
         for (int i = 0; i < size; i++) {
             if (current.data.equals(value)) {
-                remove(value);
+                remove(i);
             }
             current = current.next;
         }
